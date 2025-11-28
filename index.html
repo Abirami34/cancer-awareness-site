@@ -98,23 +98,29 @@
 
 
     <script>
-        async function fetchQuote() {
-            try {
-                const res = await fetch('https://api.quotable.io/random');
-                const data = await res.json();
-                document.getElementById('quote').textContent = data.content;
-            } catch (error) {
-                document.getElementById('quote').textContent = 'Unable to load quote right now.';
-            }
+    async function fetchQuote() {
+        try {
+            const res = await fetch('https://api.quotable.io/random');
+            const data = await res.json();
+            document.getElementById('quote').textContent = data.content;
+        } catch (error) {
+            document.getElementById('quote').textContent = 'Unable to load quote right now.';
         }
+    }
+    
+    // START HERE - This ensures the browser waits for the HTML to be fully loaded
+    window.onload = function() {
         fetchQuote();
         setInterval(fetchQuote, 10000);
-    </script>
+    };
+    // END HERE
+</script>
 
 </body>
 
 
 </html>
+
 
 
 
