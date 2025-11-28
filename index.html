@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cancer Awareness & Support</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            color: #333;
+        }
+
+        header {
+            background: #b30059;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #b30059;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input,
+        textarea {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px;
+            background: #b30059;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #99004d;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Cancer Awareness & Support</h1>
+        <p>Spreading knowledge, hope, and strength.</p>
+    </header>
+
+
+    <img src="C:\Users\gopal\Downloads\img2.jpg" width="100%" height="500px">
+    <div class="container">
+        <h2>Get in Touch</h2>
+        <p>If you have questions or need support, feel free to send us a message.</p>
+
+
+        <form>
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Your Email" required />
+            <textarea rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+    <div class="container">
+        <h2>Motivational Quote</h2>
+        <p id="quote">Loading quote...</p>
+    </div>
+
+
+    <script>
+        async function fetchQuote() {
+            try {
+                const res = await fetch('https://api.quotable.io/random');
+                const data = await res.json();
+                document.getElementById('quote').textContent = data.content;
+            } catch (error) {
+                document.getElementById('quote').textContent = 'Unable to load quote right now.';
+            }
+        }
+        fetchQuote();
+        setInterval(fetchQuote, 10000);
+    </script>
+
+</body>
+
+</html>
